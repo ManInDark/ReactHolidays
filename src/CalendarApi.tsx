@@ -17,28 +17,34 @@ function ListHolidays() {
         });
     }, [satYear])
     return <>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {keys.map((holiday) =>
-                    <tr key={holiday.date + "-" + holiday.localName}>
-                        <td>
-                            {holiday.date}
-                        </td>
-                        <td>
-                            {holiday.localName}
-                        </td>
-                    </tr>
-                )}
-            </tbody>
-        </table>
-        <input type="text" value={year} onChange={(e) => { setYear(e.target.value) }} />
-        <input type="submit" onClick={() => { setSatYear(year) }} />
+        <div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {keys.map((holiday) =>
+                            <tr key={holiday.date + "-" + holiday.localName}>
+                                <td>
+                                    {holiday.date}
+                                </td>
+                                <td>
+                                    {holiday.localName}
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <input type="number" value={year} onChange={(e) => { setYear(e.target.value) }} />
+                <input type="submit" onClick={() => { setSatYear(year) }} />
+            </div>
+        </div>
     </>
 }
 
