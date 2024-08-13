@@ -7,6 +7,7 @@ async function getText(satYear: string): Promise<Holiday[]> {
 }
 
 function ListHolidays() {
+    const [loading, setLoading] = useState<boolean>(true);
     const [keys, setKeys] = useState<Holiday[]>([]);
     const [year, setYear] = useState<string>("2024");
     const [satYear, setSatYear] = useState<string>("2024");
@@ -14,11 +15,15 @@ function ListHolidays() {
     useEffect(() => {
         getText(satYear).then((value) => {
             setKeys(value);
+            setLoading(false);
         });
     }, [satYear])
     return <>
         <div>
             <div>
+                {loading ?
+                <>Loading ...</>
+                :
                 <table>
                     <thead>
                         <tr>
@@ -39,6 +44,7 @@ function ListHolidays() {
                         )}
                     </tbody>
                 </table>
+                }
             </div>
             <div>
                 <input type="number" value={year} onChange={(e) => { setYear(e.target.value) }} />
