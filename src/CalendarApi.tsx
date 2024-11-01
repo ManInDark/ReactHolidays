@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 type Holiday = { "date": string, "localName": string, "countryCode": string, "fixed": string, "global": string, "types": string[] }
 
 async function getText(satYear: string): Promise<Holiday[]> {
-    return JSON.parse(await (await fetch("https://date.nager.at/api/v3/publicholidays/" + satYear + "/DE")).text());
+    return await (await fetch("https://date.nager.at/api/v3/publicholidays/" + satYear + "/DE")).json();
 }
 
 function ListHolidays() {
